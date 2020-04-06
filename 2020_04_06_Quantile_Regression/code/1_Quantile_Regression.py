@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt
 
 
 # constantes
-PATH_FILE = 'data/boston_housing.csv'
+PATH_FILE = '../data/boston_housing.csv'
 TEST_SIZE = 0.2 # porcentagem total dos dados que usaremos para teste
 RANDOM_SEED = 42 # Answer to the Ultimate Question of Life, The Universe, and Everything
 N_SPLITS = 10 # quantidade de folder do cross-validation
@@ -56,8 +56,8 @@ df_scores_loss = pd.DataFrame()
 for target, y in list_targets:
     
     print('\n\n')
-    print(f'RESULTADOS NO {target}')
     print('----------------------------------------')
+    print(f'RESULTADOS NO {target}')
     
     for name, loss in LIST_LOSS:
         model = GradientBoostingRegressor(loss=loss, random_state=RANDOM_SEED)
@@ -73,5 +73,5 @@ for target, y in list_targets:
         print(f'Resultado {name} no cross-validation com {N_SPLITS} splits')
         print(f'Média RMSE   : {scores.mean():.2f}')
         print(f'Desvio Padrão: {scores.std():.2f}')
-        print(f'RMSE teste: {mean_squared_error(y_test, y_pred):.2f}')
+        print(f'RMSE teste   : {mean_squared_error(y_test, y_pred):.2f}')
         print('----------')
