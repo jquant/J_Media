@@ -4,12 +4,12 @@ least squares e least absolute deviation, que é semelhante a usar a loss
 quantile com alpha = 0.5
 
 1.1) Rodaremos o estimador com as duas loss nos dados de treino normais e iremos
-compará-los através de um box-plot usando o scoring Root Mean Squared Error, depois
-iremos fazer previsão nos dados de teste e ver como os dois se saíram em dados que nunca viram
+compará-los com scoring Root Mean Squared Error, depois iremos fazer previsão nos dados de teste e ver como os 
+dois se saíram em dados que nunca viram
 
 1.2) Rodaremos o estimador com as duas loss nos dados de treino, porém iremos inserir outliers de propósito
-para ver qual o comportamento do estimador com cada loss, iremos compará-los através de um box-plot usando o scoring
-Root Mean Squared Erros, depois iremos fazer previsões nos dados de teste e ver como cada um se comporta nesse cenário
+para ver qual o comportamento do estimador com cada loss, iremos compará-los através do scoring
+Root Mean Squared Error, depois iremos fazer previsões nos dados de teste e ver como cada um se comporta nesse cenário
 com outliers
 """
 # importando bibliotecas
@@ -27,7 +27,7 @@ TEST_SIZE = 0.2 # porcentagem total dos dados que usaremos para teste
 RANDOM_SEED = 42 # Answer to the Ultimate Question of Life, The Universe, and Everything
 N_SPLITS = 10 # quantidade de folder do cross-validation
 LIST_LOSS = [('Least_Squares', 'ls'), ('Least_Abs_Dev', 'lad')] # lista de tuplas com os nomes da loss e a loss
-SCORING = 'neg_root_mean_squared_error' # métrica que usaremos dentro do cross-validation
+SCORING = 'neg_root_mean_squared_error' # metrica que usaremos dentro do cross-validation
 
 # leitura dos dados
 df_housing = pd.read_csv(PATH_FILE)
