@@ -47,29 +47,27 @@ y_train_outlier.iloc[0] = y_train_outlier.iloc[0] * 100
 list_targets = [('Target_Normal', y_train),
                 ('Target_Alterado', y_train_outlier)]
 
-# instanciando modelo
+# instanciando o kfold para o cross-validation
 kfold = KFold(n_splits=N_SPLITS, shuffle=True, random_state=RANDOM_SEED)
 
-# comparando as duas loss nos dados normais
-df_scores_loss = pd.DataFrame()
-
+# iterando na lista com targets normais e alterados
 for target, y in list_targets:
     
     print('\n\n')
     print('----------------------------------------')
     print(f'RESULTADOS NO {target}')
     
+    # iterando na lista com as duas loss que usaremos
     for name, loss in LIST_LOSS:
+        # instanciando estimador e rodando o cross-validation
         model = GradientBoostingRegressor(loss=loss, random_state=RANDOM_SEED)
-        name_col = 'Loss_' + name
-        
         scores = -cross_val_score(model, X_train, y, cv=kfold, scoring=SCORING)
-        df_scores_loss.loc[:, name_col] = scores
         
-        # treinando e prevendo nos dados de teste
+        # treinando e depois prevendo nos dados de teste
         model.fit(X_train, y)
         y_pred = model.predict(X_test)
         
+        # printando os resultado do cross-validation e depois nos dados de teste
         print(f'Resultado {name} no cross-validation com {N_SPLITS} splits')
         print(f'Média RMSE   : {scores.mean():.2f}')
         print(f'Desvio Padrão: {scores.std():.2f}')
