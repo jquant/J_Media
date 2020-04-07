@@ -25,8 +25,8 @@ import matplotlib.pyplot as plt
 PATH_FILE = '../data/boston_housing.csv'
 TEST_SIZE = 0.2 # porcentagem total dos dados que usaremos para teste
 RANDOM_SEED = 42 # Answer to the Ultimate Question of Life, The Universe, and Everything
-N_SPLITS = 10 # quantidade de folder do cross-validation
-LIST_LOSS = [('Least_Squares', 'ls'), ('Least_Abs_Dev', 'lad')] # lista de tuplas com os nomes da loss e a loss
+N_SPLITS = 10 # quantidade de folders do cross-validation
+LIST_LOSS = [('Least_Squares', 'ls'), ('Least_Abs_Dev', 'lad'), ('Huber', 'huber')] # lista de tuplas com os nomes da loss e a loss
 SCORING = 'neg_root_mean_squared_error' # metrica que usaremos dentro do cross-validation
 
 # leitura dos dados
@@ -73,3 +73,8 @@ for target, y in list_targets:
         print(f'Desvio Padrão: {scores.std():.2f}')
         print(f'RMSE teste   : {mean_squared_error(y_test, y_pred):.2f}')
         print('----------')
+        
+#################################################################################
+############ VISUALIZAÇÃO DO ESTIMADOR EM DADOS COM OUTLIER #####################
+#################################################################################
+
