@@ -5,11 +5,9 @@ Os dados foram baixados direto do módulo [sklearn.datasets.load_boston](https:/
 O script GerandoDados.py mostra como você consegue exportar direto do [sklearn.datasets.load_boston](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html#sklearn-datasets-load-boston) um .csv.<br>
 
 Link para usar diretamente na função _pd.read_csv()_ e ler direto da internet:<br>
-
-
-**ATENÇÃO!:** a descrição abaixo não passa de uma tradução livre com alguns adicionais do próprio Scikit-Learn<br>
 [URL_Boston_Raw_Data](https://raw.githubusercontent.com/jquant/J_Media/master/2020_04_06_Quantile_Regression/data/boston_housing.csv)
 
+**ATENÇÃO!:** a descrição abaixo não passa de uma tradução livre com alguns adicionais do próprio Scikit-Learn<br>
 ## Informações do Data Set:
 
 **Número de samples(linhas)**: 506<br>
