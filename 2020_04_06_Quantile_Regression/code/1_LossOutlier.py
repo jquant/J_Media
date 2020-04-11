@@ -18,16 +18,17 @@ from sklearn.model_selection import train_test_split
 from sklearn.model_selection import KFold, cross_val_score
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import mean_squared_error
-import matplotlib.pyplot as plt
 
 
 # constantes
 PATH_FILE = '../data/boston_housing.csv'
-TEST_SIZE = 0.2 # porcentagem total dos dados que usaremos para teste
+TEST_SIZE = 0.2 
 RANDOM_SEED = 42 # Answer to the Ultimate Question of Life, The Universe, and Everything
-N_SPLITS = 10 # quantidade de folders do cross-validation
-LIST_LOSS = [('Least_Squares', 'ls'), ('Least_Abs_Dev', 'lad'), ('Huber', 'huber')] # lista de tuplas com os nomes da loss e a loss
-SCORING = 'neg_root_mean_squared_error' # metrica que usaremos dentro do cross-validation
+N_SPLITS = 10 
+LIST_LOSS = [('Least_Squares', 'ls'), 
+            ('Least_Abs_Dev', 'lad'), 
+            ('Huber', 'huber')]
+SCORING = 'neg_root_mean_squared_error'
 
 # leitura dos dados
 df_housing = pd.read_csv(PATH_FILE)
@@ -66,15 +67,14 @@ for target, y in list_targets:
         # treinando e depois prevendo nos dados de teste
         model.fit(X_train, y)
         y_pred = model.predict(X_test)
-        
+
+        # metrica root mean squared error
+        rmse = mean_squared_error(y_test, y_pred, squared=False)
+
         # printando os resultado do cross-validation e depois nos dados de teste
         print(f'Resultado {name} no cross-validation com {N_SPLITS} splits')
         print(f'Média RMSE   : {scores.mean():.2f}')
         print(f'Desvio Padrão: {scores.std():.2f}')
-        print(f'RMSE teste   : {mean_squared_error(y_test, y_pred):.2f}')
+        print(f'RMSE teste   : {rmse:.2f}')
         print('----------')
         
-#################################################################################
-############ VISUALIZAÇÃO DO ESTIMADOR EM DADOS COM OUTLIER #####################
-#################################################################################
-
