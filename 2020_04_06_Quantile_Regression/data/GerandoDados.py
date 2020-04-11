@@ -11,7 +11,6 @@ a URL para a função pd.read_csv() e ler diretamente os dados da internet
 
 # importando bibliotecas
 import pandas as pd
-import numpy as np
 from sklearn.datasets import load_boston
 
 # criando
@@ -19,14 +18,11 @@ data = load_boston()
 
 # separando entre features e targets
 X = data['data']
-y = data['target'].reshape(-1, 1) # fazendo o reshape para podermos colocar tudo dentro de um unico np.ndarray
-
-# dados par criacao do DataFrame
-dataframe = np.hstack((X, y)) # np.ndarray com todos os dados das features e do target MEDV
-cols_names = list(data.feature_names) + ['MEDV'] # lista com os nomes das colunas
+y = data['target']
 
 # criando dataframe
-df_boston = pd.DataFrame(data=dataframe, columns=cols_names)
+df_boston = pd.DataFrame(data=X, columns=data['feature_names'])
+df_boston.loc[:, 'MEDV'] = y
 
 # exportando dataframe em formato csv
 df_boston.to_csv(path_or_buf='data/boston_housing.csv', index=False)
