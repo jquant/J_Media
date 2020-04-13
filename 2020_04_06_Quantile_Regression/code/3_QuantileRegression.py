@@ -51,6 +51,8 @@ plt.plot(df_test.loc[:, 'y_test'], 'b-', marker='o', label='Real')
 plt.plot(df_test.loc[:, 'Median'], 'r--', marker='o', label='Pred', alpha=0.5)
 plt.fill_between(df_test.index, df_test.loc[:, 'Lower_Bound'], df_test.loc[:, 'Upper_Bound'], 
                 label='I.C. 90%', alpha=0.4)
+plt.title('Previsões e Intervalo de Confiança')
+plt.ylabel('MEDV')
 plt.legend()
 plt.show()
 
