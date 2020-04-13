@@ -12,3 +12,5 @@ A ideia é comparar qual o efeito de cada loss em dados com e sem outliers.
 
 ## 2_LossOutlierVis.py
 Este script roda um **Gradient Boosting Regressor(GBR)** com três loss diferentes nos dados de treino. Inserimos outliers sintéticos nos dados de treino e criamos uma função para criar um scatter plot dos dados.
+
+## 3_QuantileRegression.py
