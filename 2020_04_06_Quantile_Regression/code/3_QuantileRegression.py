@@ -47,7 +47,7 @@ for name, model in list_models:
 df_test.sort_index(inplace=True)
 
 # visualizacao dos dados
-plt.plot(df_test.loc[:, 'y_test'], 'b-', marker='o')
+plt.plot(df_test.loc[:, 'y_test'], 'b-', marker='o', label='Real')
 plt.plot(df_test.loc[:, 'Median'], 'r--', marker='o', label='Pred', alpha=0.5)
 plt.fill_between(df_test.index, df_test.loc[:, 'Lower_Bound'], df_test.loc[:, 'Upper_Bound'], 
                 label='I.C. 90%', alpha=0.4)
